@@ -1,5 +1,6 @@
 package com.jglitter;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
@@ -25,8 +26,11 @@ import org.springframework.context.annotation.Import;
         })
 public class Config {
 
+    @Value("${server.port}")
+    private Integer serverPort;
+
     @Bean
     public EmbeddedServletContainerFactory servletContainer() {
-        return new TomcatEmbeddedServletContainerFactory(2020);
+        return new TomcatEmbeddedServletContainerFactory(serverPort);
     }
 }

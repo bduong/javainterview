@@ -49,7 +49,7 @@ public class RestApiTests {
         startServer();
 
         Client client = setupRestClient();
-        webTarget = client.target("http://localhost:2020/api");
+        webTarget = client.target("http://localhost:8080/api");
     }
 
     private void startServer()
