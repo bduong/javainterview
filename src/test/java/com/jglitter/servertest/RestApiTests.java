@@ -1,10 +1,22 @@
 package com.jglitter.servertest;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
+
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+
 import com.jglitter.Config;
 import com.jglitter.domain.Tweet;
 import com.jglitter.domain.Tweets;
 import com.jglitter.domain.User;
 import com.jglitter.domain.Users;
+
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.jackson.JacksonFeature;
@@ -14,17 +26,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 import static javax.ws.rs.client.Entity.json;
 import static org.testng.Assert.assertTrue;
@@ -48,7 +49,7 @@ public class RestApiTests {
         startServer();
 
         Client client = setupRestClient();
-        webTarget = client.target("http://localhost:8080/api");
+        webTarget = client.target("http://localhost:2020/api");
     }
 
     private void startServer()

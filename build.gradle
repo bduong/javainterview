@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.3.3.RELEASE'
+        springBootVersion = '1.5.10.RELEASE'
     }
 
     repositories {
@@ -11,11 +11,12 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+
     }
 }
 
 apply plugin: 'java'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 
 repositories {
     mavenCentral()
@@ -56,6 +57,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter:${springBootVersion}"
     compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
     compile "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     compile "org.springframework.plugin:spring-plugin-core:${springPluginCoreVersion}"
 
     compile "org.glassfish.jersey.containers:jersey-container-servlet:${jerseyVersion}"
@@ -68,7 +70,8 @@ dependencies {
 
     testCompile "org.testng:testng:${testNgVersion}"
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
-    testCompile group: 'org.springframework', name: 'spring-test', version: springVersion
+//    testCompile group: 'org.springframework', name: 'spring-test', version: springVersion
+
 }
 
 test {
